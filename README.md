@@ -1,4 +1,4 @@
-# __db-mentorship-assignment 1__
+# __db-mentorship-task 1__
 ### We will introduce solving for following tasks:
 - Create the DB schema script with the following entities
 ![](https://github.com/au3m/db-mentorship-assignment/blob/main/assets/entities.png?raw=true)
