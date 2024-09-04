@@ -1,4 +1,5 @@
-# __db-mentorship-task 1__
+# __E-Commerce Database Design__
+## Task 1
 ### We will introduce solving for following tasks:
 - Create the DB schema script with the following entities
 ![](https://github.com/au3m/db-mentorship-assignment/blob/main/assets/entities.png?raw=true)
