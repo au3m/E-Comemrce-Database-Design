@@ -106,14 +106,22 @@ SELECT product_name, description, price
 FROM product
 WHERE product_name LIKE '%camera%' OR description LIKE '%camera%';
 ```
-## Retrieve Products Which Contain Word "camera" Within Name Or Description
+## Suggest Popular Products in the Same Category For the Same Author, Excluding the Purchased Product from the Recommendations
+
 ```sql
+-- product suggestion
 SELECT product.product_name, product.description, product.price, COUNT(order_details.product_id) as product_count
 FROM product JOIN order_details ON product.product_id = order_details.product_id
 WHERE category_id =
 (SELECT category_id 
 FROM product
 WHERE product_id = 2115)
+AND product.author_id = (
+    SELECT author_id
+    FROM product
+    WHERE product_id = 2115
+)
+AND product.product_id != 2115
 GROUP BY product.product_id
-ORDER BY product_count;
+ORDER BY product_count DESC;
 ```
