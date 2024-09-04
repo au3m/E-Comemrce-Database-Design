@@ -1,5 +1,5 @@
 # __E-Commerce Database Design__
-## Task 1
+## *Task 1*
 ### We will introduce solving for following tasks:
 - Create the DB schema script with the following entities
 ![](https://github.com/au3m/db-mentorship-assignment/blob/main/assets/entities.png?raw=true)
@@ -96,3 +96,24 @@ HAVING amount > 500;
 
 ## Denormalization Mechanism on Customer and Order Entities
 ###### Achieving better performance for data which retrives using join operation between customer and order entities like our last example __"List of Customers With Orders Totaling More Than $500 In the Past Month"__ we can create new table with attributes (customer_name and spending_amount) and triger db to update this entity within specific interval of time to achieve reading like this report more effiecient without the burdens of joining process.
+
+---
+
+## *Task 2*
+## Retrieve Products Which Contain Word "camera" Within Name Or Description
+```sql
+SELECT product_name, description, price
+FROM product
+WHERE product_name LIKE '%camera%' OR description LIKE '%camera%';
+```
+## Retrieve Products Which Contain Word "camera" Within Name Or Description
+```sql
+SELECT product.product_name, product.description, product.price, COUNT(order_details.product_id) as product_count
+FROM product JOIN order_details ON product.product_id = order_details.product_id
+WHERE category_id =
+(SELECT category_id 
+FROM product
+WHERE product_id = 2115)
+GROUP BY product.product_id
+ORDER BY product_count;
+```
