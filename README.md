@@ -109,7 +109,6 @@ WHERE product_name LIKE '%camera%' OR description LIKE '%camera%';
 ## Suggest Popular Products in the Same Category For the Same Author, Excluding the Purchased Product from the Recommendations
 
 ```sql
--- product suggestion
 SELECT product.product_name, product.description, product.price, COUNT(order_details.product_id) as product_count
 FROM product JOIN order_details ON product.product_id = order_details.product_id
 WHERE category_id =
